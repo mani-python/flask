@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,url_for
 import os
 
 app = Flask(__name__)
@@ -6,12 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-	return "Index page"
-
-@app.route('/hello')
-
-def hello():
-	return "Hello World"
+	return url_for('printuser', username='Mani')
 
 @app.route('/user/<username>')
 
