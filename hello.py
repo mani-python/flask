@@ -1,16 +1,12 @@
-from flask import Flask,url_for,request
+from flask import Flask,url_for,request,render_template
 import os
 
 app = Flask(__name__)
 
-@app.route('/login',methods=['GET','POST'])
-
-def index():
-	if request.method == 'POST':
-		return 'username is ' + request.values["username"]
-	else:
-		return '<form method="post" action="/login"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
-
+@app.route('/hello')
+@app.route('/hello/<name>')
+def hello(name=None):
+	return render_template('hello.html',name = name)
 if __name__ == '__main__':
 	app.debug = True
 	app.run()
