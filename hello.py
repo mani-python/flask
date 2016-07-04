@@ -1,22 +1,15 @@
-from flask import Flask,url_for
+from flask import Flask,url_for,request
 import os
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/login',methods=['GET'])
 
 def index():
-	return url_for('printuser', username='Mani')
-
-@app.route('/user/<username>')
-
-def printuser(username):
-	return "Hello" + " " + username
-
-@app.route('/post/<int:postid>')
-
-def printpost(postid):
-	return "Hello %d" % postid
+	if request.values:
+		return "Username is " + request.values['username']
+	else:
+		return '<form method="get" action="/login"><input type="text" name="username" /><p><button type="submit">Submit</button></form>'
 
 if __name__ == '__main__':
 	app.debug = True
