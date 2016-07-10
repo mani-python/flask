@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/login')
 
 def  dirs():
 	path = '/Users/mgovindarajan/Documents/Python/flask_init'
